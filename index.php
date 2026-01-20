@@ -89,6 +89,8 @@
             <button type="submit" name="submit_daftar" class="btn-submit">
                 <span>Daftar Sekarang</span>
             </button>
+
+            <a href="dashboard.php" style="display: block; text-align: center; margin-top: 15px; font-size: 13px; color: var(--text-light); text-decoration: none;">Kembali ke Dashboard</a>
         </form>
     </div>
 
