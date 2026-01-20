@@ -4,21 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pendaftaran Kursus Coding</title>
+    <title>Pendaftaran Swift Skill</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <div class="container">
-        <h2>Daftar Kursus IT</h2>
+        <h2>Learning with Swift Skill</h2>
 
-        <?php if(isset($_GET['pesan'])): ?>
-        <?php if($_GET['pesan'] == 'berhasil'): ?>
-        <div class="alert alert-success">Selamat! Pendaftaran Anda berhasil disimpan.</div>
-        <?php elseif($_GET['pesan'] == 'gagal'): ?>
-        <div class="alert alert-error">Maaf, terjadi kesalahan saat menyimpan data.</div>
-        <?php endif; ?>
+        <?php if (isset($_GET['pesan'])): ?>
+            <?php if ($_GET['pesan'] == 'berhasil'): ?>
+                <div class="alert alert-success">Selamat! Pendaftaran Anda berhasil disimpan.</div>
+            <?php elseif ($_GET['pesan'] == 'gagal'): ?>
+                <div class="alert alert-error">Maaf, terjadi kesalahan saat menyimpan data.</div>
+            <?php endif; ?>
         <?php endif; ?>
 
         <form action="proses_simpan.php" method="POST">

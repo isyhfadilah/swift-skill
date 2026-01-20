@@ -1,9 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "kursus_coding", 8080);
-
-if (!$conn) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+include 'koneksi.php';
 
 if (isset($_POST['submit_daftar'])) {
     $nama    = $_POST['nama'];
@@ -22,4 +18,3 @@ if (isset($_POST['submit_daftar'])) {
         header("Location: index.php?pesan=gagal");
     }
 }
-?>
