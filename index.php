@@ -30,7 +30,7 @@
             </div>
         <?php endif; ?>
 
-        <form action="proses_simpan.php" method="POST">
+        <form action="proses_simpan.php" method="POST" enctype="multipart/form-data">
             <div class="form-grid">
                 <div class="form-group">
                     <label>Nama Lengkap</label>
@@ -68,6 +68,12 @@
                     <label>Tanggal Mulai</label>
                     <input type="date" name="tanggal" required>
                 </div>
+            </div>
+
+            <div class="form-group">
+                <label>Foto Profil / Identitas</label>
+                <input type="file" name="foto" accept="image/*" required>
+                <small style="color: var(--text-light); font-size: 11px;">Format: JPG, PNG, JPEG (Maks. 2MB)</small>
             </div>
 
             <div class="form-group">

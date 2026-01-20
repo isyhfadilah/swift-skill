@@ -9,6 +9,7 @@ CREATE TABLE pendaftaran_kursus (
     tanggal_mulai DATE NOT NULL,
     biaya_kursus DECIMAL(10, 2) NOT NULL,
     catatan_khusus TEXT,
+    foto VARCHAR(255),
     status_input TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

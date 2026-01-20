@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Admin - Swift Skill</title>
     <link rel="stylesheet" href="style.css">
+
     <style>
         .container-wide {
             max-width: 1200px;
@@ -47,6 +48,34 @@
             font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .img-siswa {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border);
+            background-color: #f1f5f9;
+        }
+
+        .no-photo {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: var(--text-light);
+            border: 2px solid var(--border);
         }
 
         .actions {
@@ -93,11 +122,6 @@
             color: var(--primary);
             font-weight: 600;
         }
-
-
-        .icon {
-            font-weight: bold;
-        }
     </style>
 </head>
 
@@ -112,25 +136,14 @@
             <a href="index.php" class="btn-submit" style="width: auto; padding: 10px 20px; text-decoration: none;">+ Tambah Baru</a>
         </header>
 
-        <?php
-        if (isset($_GET['pesan'])): ?>
+        <?php if (isset($_GET['pesan'])): ?>
             <div class="alert-container">
                 <?php if ($_GET['pesan'] == 'edit_berhasil'): ?>
-                    <div class="alert alert-success">
-                        <span class="icon">✓</span> Data berhasil diperbarui.
-                    </div>
-                <?php elseif ($_GET['pesan'] == 'edit_gagal'): ?>
-                    <div class="alert alert-error">
-                        <span class="icon">✕</span> Terjadi kesalahan saat memperbarui data.
-                    </div>
+                    <div class="alert alert-success">✓ Data berhasil diperbarui.</div>
                 <?php elseif ($_GET['pesan'] == 'hapus_berhasil'): ?>
-                    <div class="alert alert-success">
-                        <span class="icon">✓</span> Data berhasil dihapus.
-                    </div>
-                <?php elseif ($_GET['pesan'] == 'hapus_gagal'): ?>
-                    <div class="alert alert-error">
-                        <span class="icon">✕</span> Terjadi kesalahan saat menghapus data.
-                    </div>
+                    <div class="alert alert-success">✓ Data berhasil dihapus.</div>
+                <?php elseif (strpos($_GET['pesan'], 'gagal') !== false): ?>
+                    <div class="alert alert-error">✕ Terjadi kesalahan pada sistem.</div>
                 <?php endif; ?>
             </div>
         <?php endif; ?>
@@ -140,7 +153,7 @@
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Nama Siswa</th>
+                        <th>Siswa</th>
                         <th>Paket</th>
                         <th>Tanggal Mulai</th>
                         <th>Biaya</th>
@@ -157,8 +170,18 @@
                         <tr>
                             <td>#<?php echo $row['id']; ?></td>
                             <td>
-                                <strong><?php echo htmlspecialchars($row['nama_siswa']); ?></strong><br>
-                                <small style="color: var(--text-light)"><?php echo htmlspecialchars($row['email_siswa']); ?></small>
+                                <div class="user-info">
+                                    <?php if (!empty($row['foto']) && file_exists("uploads/" . $row['foto'])): ?>
+                                        <img src="uploads/<?php echo $row['foto']; ?>" class="img-siswa" alt="Foto">
+                                    <?php else: ?>
+                                        <div class="no-photo">N/A</div>
+                                    <?php endif; ?>
+
+                                    <div>
+                                        <strong><?php echo htmlspecialchars($row['nama_siswa']); ?></strong><br>
+                                        <small style="color: var(--text-light)"><?php echo htmlspecialchars($row['email_siswa']); ?></small>
+                                    </div>
+                                </div>
                             </td>
                             <td><span class="badge-paket"><?php echo $row['paket_kursus']; ?></span></td>
                             <td><?php echo date('d M Y', strtotime($row['tanggal_mulai'])); ?></td>
@@ -177,6 +200,7 @@
             </table>
         </div>
     </div>
+
 </body>
 
 </html>

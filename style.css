@@ -154,3 +154,19 @@ textarea:focus {
 .btn-submit:hover {
     background-color: var(--primary-dark);
 }
+
+input[type="file"] {
+    padding: 8px;
+    background: #f1f5f9;
+    cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin-right: 10px;
+    cursor: pointer;
+}
