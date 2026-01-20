@@ -49,9 +49,17 @@
                     <div class="select-wrapper">
                         <select name="paket" required>
                             <option value="" disabled selected>Pilih Paket</option>
-                            <option value="Web Beginner">Web Beginner</option>
-                            <option value="Android Pro">Android Pro</option>
-                            <option value="Data Science">Data Science</option>
+                            <?php
+                            include 'koneksi.php';
+
+                            $query = "SELECT id, nama_paket FROM paket_kursus";
+                            $result = mysqli_query($conn, $query);
+
+                            while ($row = mysqli_fetch_assoc($result)): ?>
+                                <option value="<?php echo $row['id']; ?>">
+                                    <?php echo $row['nama_paket']; ?>
+                                </option>
+                            <?php endwhile; ?>
                         </select>
                     </div>
                 </div>

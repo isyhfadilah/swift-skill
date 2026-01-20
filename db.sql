@@ -11,3 +11,13 @@ CREATE TABLE pendaftaran_kursus (
     catatan_khusus TEXT,
     status_input TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE TABLE paket_kursus (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nama_paket VARCHAR(255) NOT NULL
+);
+
+INSERT INTO paket_kursus (nama_paket) VALUES
+('Web Beginner'),
+('Android Pro'),
+('Data Science');
